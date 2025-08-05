@@ -1,0 +1,370 @@
+@import url(\'https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap\');
+
+/* Set the video background */
+body, html {
+    height: 100%;
+    margin: 0;
+    cursor: url('icons8-cursor-60.png'), auto; /* Custom cursor */
+    overflow-x: hidden;
+}
+
+.background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    filter: blur(5px);
+}
+
+/* Loader styles */
+.loader-container {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background: rgba(56, 54, 54, 0.7);
+}
+
+.spinner {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #000000;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+    margin-left: 10px;
+    font-size: 1.2rem;
+    color: white;
+}
+
+/* Navigation bar */
+nav {
+    background-color: #925a1a;
+    width: 80%; /* Make the menu slightly smaller on left, right, and bottom */
+    margin: 20px auto 0; /* Adds space at the top (20px) and centers the menu */
+    padding: 10px 0; /* Add vertical padding */
+    z-index: 10;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around; /* Space out the menu items */
+}
+
+nav ul li {
+    /* Each list item doesn't need flex: 1 anymore */
+}
+
+nav ul li a {
+    display: block;
+    color: white;
+    padding: 14px 20px;
+    text-align: center;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    background-color: #ffc400;
+}
+
+
+/* Styling for content */
+.content {
+    position: relative;
+    z-index: 5; /* Increased to ensure visibility */
+    color: rgb(0, 0, 0);
+    text-align: left;
+    padding: 80px 20px 20px;
+    /*background: rgba(0, 0, 0, 0.5);*/
+
+    min-height: 100vh; /* Ensure content takes full viewport height */
+    opacity: 1; /* Ensure visibility */
+    transition: opacity 0.5s ease; /* Smooth transition */
+}
+
+.content-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    min-height: 100%; /* Ensure wrapper has height */
+}
+
+h1 {
+    font-size: 2.5em;
+    color: aliceblue;
+    margin: 0.5em 0;
+}
+
+h2 {
+    font-size: 2em;
+    color: aliceblue;
+    margin: 0.5em 0;
+}
+
+h3 {
+    font-size: 1.5em;
+    color: aliceblue;
+    margin: 0.5em 0;
+}
+
+p {
+    font-size: 1.2em;
+    color: aliceblue;
+    line-height: 1.6;
+}
+
+ul {
+    list-style: disc;
+    padding-left: 40px;
+    text-align: left;
+    max-width: 600px;
+    margin: 1em auto;
+}
+
+ul li {
+    font-size: 1.1em;
+    color: aliceblue;
+    margin-bottom: 0.5em;
+}
+
+/* Pixelated Anime-style Play Button */
+.play-button {
+    padding: 20px 40px;
+    font-size: 20px;
+    font-family: 'Press Start 2P', cursive;
+    background: linear-gradient(145deg, #f3ec78, #af4261);
+    border: 3px solid #ffffff;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    outline: none;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    display: block; /* Set display to block to allow margin auto */
+    margin: 30px auto; /* Center horizontally with auto margins and add 30px space from top */
+    text-align: center; /* Ensure text is centered */
+    z-index: 1000;
+}
+
+.play-button:hover {
+    background: linear-gradient(145deg, #af4261, #f3ec78);
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5);
+}
+
+.play-button:active {
+    transform: translateX(-50%) scale(0.95);
+}
+
+/* Hide audio element */
+#myAudio {
+    display: none;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        flex: none;
+    }
+
+    .play-button {
+        top: 200px;
+        padding: 15px 15px;
+        font-size: 16px;
+        z-index: 1000; /* Ensure visibility on mobile too */
+    }
+
+    .content {
+        padding: 220px 10px 20px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.8em;
+    }
+
+    h3 {
+        font-size: 1.4em;
+    }
+
+    p {
+        font-size: 1em;
+    }
+}
+
+
+/* Cards Container */
+.cards-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Space between cards */
+    flex-wrap: wrap; /* Allows the cards to wrap on smaller screens */
+    margin: 40px 0;
+    padding: 0 20px;
+}
+
+/* Define custom property for gradient angle */
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+/* Single Card */
+.card {
+    width: 30%; /* Set the width of each card */
+    position: relative; /* Required for pseudo-elements positioning */
+    border-radius: 10px; /* Ensures rounded corners */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+/* Animated Gradient Border */
+.card::before {
+    content: "";
+    position: absolute;
+    inset: -5px; /* Positions border outside the card */
+    z-index: -1; /* Places border behind card */
+    background-image: conic-gradient(
+        from var(--angle),
+        transparent 50%,
+        #fffb00,
+        #ff9100,
+        #ffffff,
+        transparent
+    );
+    border-radius: 14px; /* Slightly larger to account for border thickness */
+    animation: 3s spin linear infinite; /* Slower animation for smoother effect */
+    -webkit-mask: /* Restrict gradient to border area */
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask: /* Standard syntax */
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: exclude; /* Exclude inner area */
+    mask-composite: exclude;
+    padding: 5px; /* Creates border thickness */
+}
+
+/* Glow Effect */
+.card::after {
+    content: "";
+    position: absolute;
+    inset: -5px; /* Same as ::before for consistent border */
+    z-index: -2; /* Behind ::before for glow layering */
+    background-image: conic-gradient(
+        from var(--angle),
+        transparent 50%,
+        #ffd900,
+        #ffffff,
+        #ff7b00,
+        transparent
+    );
+    border-radius: 14px;
+    filter: blur(8px); /* Softer glow */
+    opacity: 0.6; /* Subtle glow */
+    animation: 3s spin linear infinite; /* Sync with ::before */
+    -webkit-mask: /* Restrict glow to border area */
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: exclude;
+    mask-composite: exclude;
+    padding: 5px; /* Matches ::before */
+}
+
+/* Animation for gradient rotation */
+@keyframes spin {
+    from {
+        --angle: 0deg;
+    }
+    to {
+        --angle: 360deg;
+    }
+}
+
+/* Card Content (Glass Effect) */
+.card-content {
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent white for glass */
+    border-radius: 10px; /* Matches card border-radius */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    backdrop-filter: blur(10px); /* Apply blur effect for glass effect */
+    -webkit-backdrop-filter: blur(10px); /* Safari Support */
+    overflow: hidden;
+    position: relative; /* Ensure content stays above borders */
+    z-index: 1; /* Above pseudo-elements */
+}
+
+/* Card Image */
+.card-content img {
+    width: 100%; /* Make the image fill the width of the card */
+    height: auto; /* Maintain image aspect ratio */
+    object-fit: cover;
+}
+
+/* Card Title */
+.card-content h3 {
+    font-size: 1.5em;
+    color: #fff;
+    margin: 10px;
+}
+
+/* Card Description */
+.card-content p {
+    font-size: 1em;
+    color: #ddd;
+    margin: 10px;
+}
+
+/* Card Button */
+.card-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #925a1a;
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .card {
+        width: 45%; /* Adjust to 45% for medium screen sizes */
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 100%; /* Stack the cards vertically on smaller screens */
+        margin-bottom: 20px; /* Add margin to the bottom of cards */
+    }
+
+    .cards-container {
+        padding: 0 10px; /* Adjust padding for smaller screens */
+    }
+}
