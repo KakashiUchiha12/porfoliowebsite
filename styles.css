@@ -251,7 +251,7 @@ ul li {
         transparent 50%,
         #fffb00,
         #ff9100,
-        #ffffff,
+        #ff0000,
         transparent
     );
     border-radius: 14px; /* Slightly larger to account for border thickness */
@@ -277,7 +277,7 @@ ul li {
         from var(--angle),
         transparent 50%,
         #ffd900,
-        #ffffff,
+        #ff0000,
         #ff7b00,
         transparent
     );
