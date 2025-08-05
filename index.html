@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -128,3 +129,206 @@
 </body>
 </html>
 
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <style>
+
+/* Set the video background */
+body, html {
+    height: 100%; /* Ensure the body and HTML take the full height */
+    margin: 0; /* Remove default margin */
+    cursor: url('icons8-cursor-60.png'), auto; /* Use the custom cursor image */
+}
+
+.background-video {
+    position: fixed; /* Keeps the video fixed in place */
+    top: 0;
+    left: 0;
+    width: 100%; /* Make the video take full width */
+    height: 100%; /* Make the video take full height */
+    object-fit: cover; /* Ensures the video covers the entire screen without distortion */
+    z-index: -1; /* Ensures the content sits on top of the video */
+}
+
+/* Styling for content */
+.content {
+    position: relative;
+    z-index: 1; /* Ensures content is above the video */
+    color: white;
+    text-align: center;
+    padding: 20px;
+    padding-left: 20px; /* Moves the text 20px to the right */
+}
+
+h1 {
+    font-size: 3em; /* Increase font size */
+    font-family: 'Helvetica', sans-serif; /* Change font to Helvetica */
+    margin: 20px 0;
+    color: aliceblue;
+    padding-left: 20px; /* Moves the text 20px to the right */
+}
+
+p {
+    font-size: 1.2em; /* Set font size */
+    font-family: 'Arial', sans-serif; /* Change font to Arial */
+    margin: 20px 0;
+    color: aliceblue;
+    padding-left: 20px; /* Moves the text 20px to the right */
+}
+
+l,h2, h3 {
+    font-size: 2em; /* Set font size for subheadings */
+    font-family: 'Arial', sans-serif; /* Change font */
+    margin: 20px 0;
+    color: aliceblue;
+    padding-left: 20px; /* Moves the text 20px to the right */
+}
+
+nav {
+    background-color: #333;
+    overflow: hidden;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    float: left;
+}
+
+nav ul li a {
+    display: block;
+    color: white;
+    padding: 14px 20px;
+    text-align: center;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    background-color: #575757;
+}
+
+<!-- Button Code-->
+
+ /* Pixelated Anime-style Button */
+ .play-button {
+    padding: 20px 40px;
+    font-size: 20px;
+    font-family: 'Press Start 2P', cursive;
+    background: linear-gradient(145deg, #f3ec78, #af4261);
+    border: 3px solid #ffffff;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    outline: none;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.play-button:hover {
+    background: linear-gradient(145deg, #af4261, #f3ec78);
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5);
+}
+
+.play-button:active {
+    transform: scale(0.95); /* Shrink on click */
+}
+
+/* Anime Pixelated Text (Optional for Fun Effect) */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+    </style>
+
+
+</head>
+<body>
+    <!-- Video Background -->
+    <video class="background-video" autoplay loop muted>
+        <source src="https://motionbgs.com/media/5296/orange-train-at-sunset.960x540.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+`       <!-- The Play Music Button -->
+    <button type="play-button" id="playButton">Play Music</button>
+
+    <!-- MP3 Audio Player -->
+    <audio id="myAudio" controls>
+        <source src="Relaxing Music & Rain Sounds.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+
+    <h1> This is my Portfolio website </h1>
+    <p>
+        I will make this website so good that I get hired as a web developer with 75,000 PKR/Month salary.
+    </p>
+    <h1>My Portfolio</h1>
+
+    <h2>predoctr.pk [Formerly Risen Academy]</h2>
+    <p>
+        I started this project in 2021 and it was my main motivation to get admission in Computer Science.
+    </p>
+
+    <h2>Pak Store Manager - Retail store Management software</h2>
+    <p>
+        This is a project that I have been working for quite some time now. It started off as a simple semester project [During my second semester while studying OOP].
+    </p>
+    <h3>Some Stats about Pak Store Manager</h3>
+    <l>Used in more than 2000 Stores and growing</l>
+    <l>Made a revenue of more than 20 lac in 2026</l>
+
+    <h2>KU99 - YouTube Channel</h2>
+    <p>On my personal YouTube channel I upload videos related to software, electronics, and general life updates vlogs.</p>
+
+    <h2>Kakashi Uchiha 99 - GitHub</h2>
+    <p>My all-time favorite place to hang out.</p>
+
+     <script>
+
+window.onload = function() {
+var audio = document.getElementById('myAudio'); // Get the audio element
+if (audio) {
+    audio.volume = 0.3;  // Set volume to 30% (0.3)
+    audio.muted = true;   // Mute the audio for autoplay to work
+    audio.play();         // Start playing the audio
+    audio.onplay = function() {
+        audio.muted = false; // Unmute the audio once it starts playing
+    };
+} else {
+    console.log('Audio element not found');
+}
+};
+
+
+// When the button is clicked, start playing the audio
+document.getElementById('playButton').onclick = function() {
+    var audio = document.getElementById('myAudio');
+    audio.volume = 0.3; // Set volume to 30%
+    audio.play();       // Start playing the audio
+};
+
+
+     </script>
+
+</body>
+</html>
+>>>>>>> origin/main
